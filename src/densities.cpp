@@ -1,8 +1,10 @@
-
 #include <R.h>
 #include <Rinternals.h>
 #include <R_ext/RS.h>
 #include "densities.h"
+#ifdef length
+#undef length
+#endif
 
 // ============================================================
 // Normal (Gaussian) density
