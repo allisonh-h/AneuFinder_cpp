@@ -7,6 +7,7 @@
 #include "utility.h" // //FILE_LOG(), intMax()
 #include <cmath>
 #include <Rmath.h> // dnorm(), dnbinom() and digamma() etc.
+#undef length
 #include <vector> // storing density functions in MVCopula
 
 enum whichvariate {UNIVARIATE, MULTIVARIATE};
