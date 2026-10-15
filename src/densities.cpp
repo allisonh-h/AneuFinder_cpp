@@ -1,6 +1,7 @@
 
-
-
+#include <R.h>
+#include <Rinternals.h>
+#include <R_ext/RS.h>
 #include "densities.h"
 
 // ============================================================
@@ -119,7 +120,7 @@ Poisson::Poisson(int* observations, int T, double lambda)
 	if (this->obs != NULL)
 	{
 		this->max_obs = intMax(observations, T);
-		this->lxfactorials = (double*) Calloc(max_obs+1, double);
+		this->lxfactorials = R_Calloc(max_obs+1, double);
 		this->lxfactorials[0] = 0.0;	// Not necessary, already 0 because of Calloc
 		this->lxfactorials[1] = 0.0;
 		for (int j=2; j<=max_obs; j++)
@@ -134,7 +135,7 @@ Poisson::~Poisson()
 	//FILE_LOG(logDEBUG2) << __PRETTY_FUNCTION__;
 	if (this->lxfactorials != NULL)
 	{
-		Free(this->lxfactorials);
+		R_Free(this->lxfactorials);
 	}
 }
 
@@ -341,7 +342,7 @@ NegativeBinomial::NegativeBinomial(int* observations, int T, double size, double
 	if (this->obs != NULL)
 	{
 		this->max_obs = intMax(observations, T);
-		this->lxfactorials = (double*) Calloc(max_obs+1, double);
+		this->lxfactorials = (double*) R_Calloc(max_obs+1, double);
 		this->lxfactorials[0] = 0.0;	// Not necessary, already 0 because of Calloc
 		this->lxfactorials[1] = 0.0;
 		for (int j=2; j<=max_obs; j++)
@@ -356,7 +357,7 @@ NegativeBinomial::~NegativeBinomial()
 	//FILE_LOG(logDEBUG2) << __PRETTY_FUNCTION__;
 	if (this->lxfactorials != NULL)
 	{
-		Free(this->lxfactorials);
+		R_Free(this->lxfactorials);
 	}
 }
 
