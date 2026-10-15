@@ -2,6 +2,7 @@
 
 
 #include "R_interface.h"
+#undef length
 
 static ScaleHMM* hmm; // declare as static outside the function because we only need one and this enables memory-cleanup on R_CheckUserInterrupt()
 static double** multiD;
